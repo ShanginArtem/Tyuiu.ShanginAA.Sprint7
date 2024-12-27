@@ -117,19 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="toolStripSettings_SAA.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="toolTip_SAA.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>368, 17</value>
-  </metadata>
-  <metadata name="toolStripSettings_SAA.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="backgroundWorker_SAA.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>185, 17</value>
-  </metadata>
-  <metadata name="toolTip_SAA.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>368, 17</value>
-  </metadata>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Руководство к программе "Журнал успеваемости студентов":
+
+Описание: Программа для работы с данными об успеваемости студентов (столбцы: "Студенты", "Оценка", "Примечание", "Преподаватель"). 
+Функции: хранение данных, расчет средней оценки, построение диаграммы средних оценок (по преподавателю, группе), 
+импорт/экспорт CSV, поиск по таблице, очистка таблицы.
+
+Интерфейс: Таблица данных, кнопки "Импорт CSV", "Экспорт CSV", "Рассчитать среднюю оценку", "Построить диаграмму", 
+поле "Поиск", кнопка "Очистить таблицу", метка средней оценки, область диаграммы.
+
+Функционал:
+•  Импорт CSV: Загрузка данных из CSV-файла в таблицу.
+•  Экспорт CSV: Сохранение данных из таблицы в CSV-файл.
+•  Расчет средней оценки: Вычисление средней оценки по всем студентам.
+•  Диаграмма средних оценок: Визуализация средних оценок по преподавателю или группе.
+•  Поиск: Фильтрация таблицы по введенному тексту.
+•  Очистка таблицы: Удаление всех записей из таблицы.
+
+Требования к данным: CSV с разделителем, числовые данные в "Оценка", соответствие типов данных.
+
+Доп. функции: редактирование, фильтрация, разные диаграммы (будущие улучшения).
+
+Назначение: Удобный инструмент для преподавателей/администраторов для хранения, обработки и анализа данных об успеваемости.
+</value>
+  </data>
 </root>
