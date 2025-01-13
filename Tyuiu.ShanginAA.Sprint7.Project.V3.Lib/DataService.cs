@@ -16,7 +16,7 @@ namespace Tyuiu.ShanginAA.Sprint7.Project.V3.Lib
                     {
                         var line = reader.ReadLine();
                         var columns = line.Split(';');
-                        if (columns.Length > 1 && int.TryParse(columns[1], out int grade)) // Предполагается, что оценки во втором столбце
+                        if (columns.Length > 1 && int.TryParse(columns[1], out int grade))
                         {
                             grades.Add(grade);
                         }

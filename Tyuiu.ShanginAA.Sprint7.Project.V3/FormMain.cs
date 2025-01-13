@@ -18,9 +18,9 @@ namespace Tyuiu.ShanginAA.Sprint7.Project.V3
         private void SetupChart()
         {
             
-            chartGrade_SAA.ChartAreas.Add(new ChartArea("MainArea")); 
-            chartGrade_SAA.Legends.Add(new Legend("GradesLegend")); 
-            chartGrade_SAA.Series.Add(new Series("ќценки")
+            chartPercent_SAA.ChartAreas.Add(new ChartArea("MainArea")); 
+            chartPercent_SAA.Legends.Add(new Legend("GradesLegend")); 
+            chartPercent_SAA.Series.Add(new Series("ќценки")
             {
                 ChartType = SeriesChartType.Column, 
                 XValueType = ChartValueType.Int32 
@@ -60,7 +60,7 @@ namespace Tyuiu.ShanginAA.Sprint7.Project.V3
                                 var row = lines[i].Split(';');
 
                                 
-                                dataGridViewStudents_SAA.Rows.Add(row);
+                                dataGridViewTeachers_SAA.Rows.Add(row);
 
                             }
                         }
@@ -92,7 +92,7 @@ namespace Tyuiu.ShanginAA.Sprint7.Project.V3
                     using (StreamWriter writer = new StreamWriter(filePath, false, Encoding.UTF8))
                     {
                         
-                        foreach (DataGridViewRow row in dataGridViewStudents_SAA.Rows)
+                        foreach (DataGridViewRow row in dataGridViewTeachers_SAA.Rows)
                         {
                             
                             if (row.IsNewRow) continue;
@@ -115,10 +115,10 @@ namespace Tyuiu.ShanginAA.Sprint7.Project.V3
        
         private void toolStripButtonClean_SAA_Click(object sender, EventArgs e)
         {
-            dataGridViewStudents_SAA.Rows.Clear();
-            for (int i = 1; i < dataGridViewStudents_SAA.Rows.Count; i++)
+            dataGridViewTeachers_SAA.Rows.Clear();
+            for (int i = 1; i < dataGridViewTeachers_SAA.Rows.Count; i++)
             {
-                dataGridViewStudents_SAA.Columns.Clear();
+                dataGridViewTeachers_SAA.Columns.Clear();
             }
         }
 
@@ -129,27 +129,27 @@ namespace Tyuiu.ShanginAA.Sprint7.Project.V3
             var grades = GetGradesFromDataGridView();
 
             
-            var gradeCounts = Enumerable.Range(1, 5).ToDictionary(
+            var gradeCounts = Enumerable.Range(1, 100).ToDictionary(
                 grade => grade,
                 grade => grades.Count(g => g == grade)
             );
 
            
-            chartGrade_SAA.Series["ќценки"].Points.Clear();
+            chartPercent_SAA.Series["ќценки"].Points.Clear();
 
            
             foreach (var gradeCount in gradeCounts)
             {
-                chartGrade_SAA.Series["ќценки"].Points.AddXY(gradeCount.Key, gradeCount.Value);
+                chartPercent_SAA.Series["ќценки"].Points.AddXY(gradeCount.Key, gradeCount.Value);
             }
         }
         private List<int> GetGradesFromDataGridView()
         {
             var grades = new List<int>();
 
-            foreach (DataGridViewRow row in dataGridViewStudents_SAA.Rows)
+            foreach (DataGridViewRow row in dataGridViewTeachers_SAA.Rows)
             {
-                if (row.Cells.Count > 1 && int.TryParse(row.Cells[1].Value?.ToString(), out int grade)) // существует ли второй столбец, ≈сли значение €чейки можно преобразовать в целое число (оценка), то оно добавл€етс€ в список
+                if (row.Cells.Count > 1 && int.TryParse(row.Cells[1].Value?.ToString(), out int grade)) 
                 {
                     grades.Add(grade);
                 }
@@ -199,13 +199,13 @@ namespace Tyuiu.ShanginAA.Sprint7.Project.V3
             string searchValue = toolStripTextBoxSearch_SAA.Text.Trim();
 
             
-            dataGridViewStudents_SAA.ClearSelection();
+            dataGridViewTeachers_SAA.ClearSelection();
 
             
             if (!string.IsNullOrEmpty(searchValue))
             {
                 
-                bool found = SearchValueInDataGridView(dataGridViewStudents_SAA, searchValue);
+                bool found = SearchValueInDataGridView(dataGridViewTeachers_SAA, searchValue);
 
                 if (found)
                 {

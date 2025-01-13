@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             panelTop_SAA = new Panel();
             buttonSaveFile_SAA = new Button();
             buttonOpenFile_SAA = new Button();
@@ -44,30 +44,30 @@
             buttonAboutMe_SAA = new Button();
             panelBottom_SAA = new Panel();
             groupBoxResult_SAA = new GroupBox();
+            buttonGrade_SAA = new Button();
             buttonDone_SAA = new Button();
             textBoxResult_SAA = new TextBox();
             labelResult_SAA = new Label();
             splitter1 = new Splitter();
             panelLeft_SAA = new Panel();
-            dataGridViewStudents_SAA = new DataGridView();
-            panelRight_SAA = new Panel();
-            buttonGrade_SAA = new Button();
-            chartGrade_SAA = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            splitter2 = new Splitter();
-            backgroundWorker_SAA = new System.ComponentModel.BackgroundWorker();
-            toolTip_SAA = new ToolTip(components);
+            dataGridViewTeachers_SAA = new DataGridView();
             Students_SAA = new DataGridViewTextBoxColumn();
             Grade_SAA = new DataGridViewTextBoxColumn();
             Note_SAA = new DataGridViewTextBoxColumn();
             Teacher = new DataGridViewTextBoxColumn();
+            panelRight_SAA = new Panel();
+            chartPercent_SAA = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            splitter2 = new Splitter();
+            backgroundWorker_SAA = new System.ComponentModel.BackgroundWorker();
+            toolTip_SAA = new ToolTip(components);
             panelTop_SAA.SuspendLayout();
             toolStripSettings_SAA.SuspendLayout();
             panelBottom_SAA.SuspendLayout();
             groupBoxResult_SAA.SuspendLayout();
             panelLeft_SAA.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewStudents_SAA).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTeachers_SAA).BeginInit();
             panelRight_SAA.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)chartGrade_SAA).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chartPercent_SAA).BeginInit();
             SuspendLayout();
             // 
             // panelTop_SAA
@@ -187,6 +187,7 @@
             // 
             // groupBoxResult_SAA
             // 
+            groupBoxResult_SAA.Controls.Add(buttonGrade_SAA);
             groupBoxResult_SAA.Controls.Add(buttonReference_SAA);
             groupBoxResult_SAA.Controls.Add(buttonDone_SAA);
             groupBoxResult_SAA.Controls.Add(textBoxResult_SAA);
@@ -202,9 +203,22 @@
             groupBoxResult_SAA.TabStop = false;
             groupBoxResult_SAA.Text = "Результат";
             // 
+            // buttonGrade_SAA
+            // 
+            buttonGrade_SAA.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonGrade_SAA.Location = new Point(633, 12);
+            buttonGrade_SAA.Margin = new Padding(3, 2, 3, 2);
+            buttonGrade_SAA.Name = "buttonGrade_SAA";
+            buttonGrade_SAA.Size = new Size(80, 39);
+            buttonGrade_SAA.TabIndex = 2;
+            buttonGrade_SAA.Text = "Процент зачетов";
+            toolTip_SAA.SetToolTip(buttonGrade_SAA, "Вывод количества оценок учащихся");
+            buttonGrade_SAA.UseVisualStyleBackColor = true;
+            buttonGrade_SAA.Click += buttonGrade_SAA_Click;
+            // 
             // buttonDone_SAA
             // 
-            buttonDone_SAA.Location = new Point(236, 15);
+            buttonDone_SAA.Location = new Point(304, 20);
             buttonDone_SAA.Margin = new Padding(3, 2, 3, 2);
             buttonDone_SAA.Name = "buttonDone_SAA";
             buttonDone_SAA.Size = new Size(89, 22);
@@ -216,7 +230,7 @@
             // 
             // textBoxResult_SAA
             // 
-            textBoxResult_SAA.Location = new Point(122, 15);
+            textBoxResult_SAA.Location = new Point(165, 17);
             textBoxResult_SAA.Margin = new Padding(3, 2, 3, 2);
             textBoxResult_SAA.Name = "textBoxResult_SAA";
             textBoxResult_SAA.ReadOnly = true;
@@ -228,9 +242,9 @@
             labelResult_SAA.AutoSize = true;
             labelResult_SAA.Location = new Point(7, 17);
             labelResult_SAA.Name = "labelResult_SAA";
-            labelResult_SAA.Size = new Size(98, 15);
+            labelResult_SAA.Size = new Size(152, 15);
             labelResult_SAA.TabIndex = 0;
-            labelResult_SAA.Text = "Средняя оценка:";
+            labelResult_SAA.Text = "Средний процент зачетов:";
             // 
             // splitter1
             // 
@@ -243,7 +257,7 @@
             // 
             // panelLeft_SAA
             // 
-            panelLeft_SAA.Controls.Add(dataGridViewStudents_SAA);
+            panelLeft_SAA.Controls.Add(dataGridViewTeachers_SAA);
             panelLeft_SAA.Dock = DockStyle.Left;
             panelLeft_SAA.Location = new Point(0, 68);
             panelLeft_SAA.Margin = new Padding(3, 2, 3, 2);
@@ -251,24 +265,51 @@
             panelLeft_SAA.Size = new Size(613, 287);
             panelLeft_SAA.TabIndex = 0;
             // 
-            // dataGridViewStudents_SAA
+            // dataGridViewTeachers_SAA
             // 
-            dataGridViewStudents_SAA.BackgroundColor = SystemColors.Highlight;
-            dataGridViewStudents_SAA.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewStudents_SAA.Columns.AddRange(new DataGridViewColumn[] { Students_SAA, Grade_SAA, Note_SAA, Teacher });
-            dataGridViewStudents_SAA.Dock = DockStyle.Fill;
-            dataGridViewStudents_SAA.Location = new Point(0, 0);
-            dataGridViewStudents_SAA.Margin = new Padding(3, 2, 3, 2);
-            dataGridViewStudents_SAA.Name = "dataGridViewStudents_SAA";
-            dataGridViewStudents_SAA.RowHeadersVisible = false;
-            dataGridViewStudents_SAA.RowHeadersWidth = 51;
-            dataGridViewStudents_SAA.Size = new Size(613, 287);
-            dataGridViewStudents_SAA.TabIndex = 0;
+            dataGridViewTeachers_SAA.BackgroundColor = SystemColors.Highlight;
+            dataGridViewTeachers_SAA.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewTeachers_SAA.Columns.AddRange(new DataGridViewColumn[] { Students_SAA, Grade_SAA, Note_SAA, Teacher });
+            dataGridViewTeachers_SAA.Dock = DockStyle.Fill;
+            dataGridViewTeachers_SAA.Location = new Point(0, 0);
+            dataGridViewTeachers_SAA.Margin = new Padding(3, 2, 3, 2);
+            dataGridViewTeachers_SAA.Name = "dataGridViewTeachers_SAA";
+            dataGridViewTeachers_SAA.RowHeadersVisible = false;
+            dataGridViewTeachers_SAA.RowHeadersWidth = 51;
+            dataGridViewTeachers_SAA.Size = new Size(613, 287);
+            dataGridViewTeachers_SAA.TabIndex = 0;
+            // 
+            // Students_SAA
+            // 
+            Students_SAA.HeaderText = "ФИО Преподавателя";
+            Students_SAA.MinimumWidth = 6;
+            Students_SAA.Name = "Students_SAA";
+            Students_SAA.Width = 170;
+            // 
+            // Grade_SAA
+            // 
+            Grade_SAA.HeaderText = "Процент зачетов";
+            Grade_SAA.MinimumWidth = 6;
+            Grade_SAA.Name = "Grade_SAA";
+            Grade_SAA.Width = 125;
+            // 
+            // Note_SAA
+            // 
+            Note_SAA.HeaderText = "Предмет";
+            Note_SAA.MinimumWidth = 6;
+            Note_SAA.Name = "Note_SAA";
+            Note_SAA.Width = 125;
+            // 
+            // Teacher
+            // 
+            Teacher.HeaderText = "Номер аудитории";
+            Teacher.MinimumWidth = 6;
+            Teacher.Name = "Teacher";
+            Teacher.Width = 125;
             // 
             // panelRight_SAA
             // 
-            panelRight_SAA.Controls.Add(buttonGrade_SAA);
-            panelRight_SAA.Controls.Add(chartGrade_SAA);
+            panelRight_SAA.Controls.Add(chartPercent_SAA);
             panelRight_SAA.Controls.Add(splitter2);
             panelRight_SAA.Dock = DockStyle.Fill;
             panelRight_SAA.Location = new Point(613, 68);
@@ -277,39 +318,27 @@
             panelRight_SAA.Size = new Size(398, 287);
             panelRight_SAA.TabIndex = 0;
             // 
-            // buttonGrade_SAA
+            // chartPercent_SAA
             // 
-            buttonGrade_SAA.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            buttonGrade_SAA.Location = new Point(299, 232);
-            buttonGrade_SAA.Margin = new Padding(3, 2, 3, 2);
-            buttonGrade_SAA.Name = "buttonGrade_SAA";
-            buttonGrade_SAA.Size = new Size(80, 39);
-            buttonGrade_SAA.TabIndex = 2;
-            buttonGrade_SAA.Text = "Количество оценок";
-            toolTip_SAA.SetToolTip(buttonGrade_SAA, "Вывод количества оценок учащихся");
-            buttonGrade_SAA.UseVisualStyleBackColor = true;
-            buttonGrade_SAA.Click += buttonGrade_SAA_Click;
-            // 
-            // chartGrade_SAA
-            // 
-            chartGrade_SAA.BackColor = Color.YellowGreen;
-            chartArea2.Name = "ChartArea1";
-            chartGrade_SAA.ChartAreas.Add(chartArea2);
-            chartGrade_SAA.Dock = DockStyle.Fill;
-            legend2.Name = "Legend1";
-            chartGrade_SAA.Legends.Add(legend2);
-            chartGrade_SAA.Location = new Point(4, 0);
-            chartGrade_SAA.Margin = new Padding(3, 2, 3, 2);
-            chartGrade_SAA.Name = "chartGrade_SAA";
-            series2.ChartArea = "ChartArea1";
-            series2.IsVisibleInLegend = false;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            chartGrade_SAA.Series.Add(series2);
-            chartGrade_SAA.Size = new Size(394, 287);
-            chartGrade_SAA.TabIndex = 1;
-            chartGrade_SAA.Text = "chart1";
-            chartGrade_SAA.Click += chartGrade_SAA_Click;
+            chartPercent_SAA.BackColor = Color.YellowGreen;
+            chartArea1.Name = "ChartArea1";
+            chartPercent_SAA.ChartAreas.Add(chartArea1);
+            chartPercent_SAA.Dock = DockStyle.Fill;
+            legend1.Enabled = false;
+            legend1.Name = "Legend1";
+            chartPercent_SAA.Legends.Add(legend1);
+            chartPercent_SAA.Location = new Point(4, 0);
+            chartPercent_SAA.Margin = new Padding(3, 2, 3, 2);
+            chartPercent_SAA.Name = "chartPercent_SAA";
+            series1.ChartArea = "ChartArea1";
+            series1.IsVisibleInLegend = false;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chartPercent_SAA.Series.Add(series1);
+            chartPercent_SAA.Size = new Size(394, 287);
+            chartPercent_SAA.TabIndex = 1;
+            chartPercent_SAA.Text = "chart1";
+            chartPercent_SAA.Click += chartGrade_SAA_Click;
             // 
             // splitter2
             // 
@@ -324,34 +353,6 @@
             // 
             toolTip_SAA.Tag = "";
             toolTip_SAA.ToolTipTitle = "Подсказка";
-            // 
-            // Students_SAA
-            // 
-            Students_SAA.HeaderText = "Студенты";
-            Students_SAA.MinimumWidth = 6;
-            Students_SAA.Name = "Students_SAA";
-            Students_SAA.Width = 170;
-            // 
-            // Grade_SAA
-            // 
-            Grade_SAA.HeaderText = "Оценка";
-            Grade_SAA.MinimumWidth = 6;
-            Grade_SAA.Name = "Grade_SAA";
-            Grade_SAA.Width = 125;
-            // 
-            // Note_SAA
-            // 
-            Note_SAA.HeaderText = "Предмет";
-            Note_SAA.MinimumWidth = 6;
-            Note_SAA.Name = "Note_SAA";
-            Note_SAA.Width = 125;
-            // 
-            // Teacher
-            // 
-            Teacher.HeaderText = "Преподаватель";
-            Teacher.MinimumWidth = 6;
-            Teacher.Name = "Teacher";
-            Teacher.Width = 125;
             // 
             // FormMain
             // 
@@ -376,9 +377,9 @@
             groupBoxResult_SAA.ResumeLayout(false);
             groupBoxResult_SAA.PerformLayout();
             panelLeft_SAA.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridViewStudents_SAA).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTeachers_SAA).EndInit();
             panelRight_SAA.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)chartGrade_SAA).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chartPercent_SAA).EndInit();
             ResumeLayout(false);
         }
 
@@ -399,10 +400,10 @@
         private Button buttonSaveFile_SAA;
         private Button buttonAboutMe_SAA;
         private Button buttonOpenFile_SAA;
-        private DataGridView dataGridViewStudents_SAA;
+        private DataGridView dataGridViewTeachers_SAA;
         private GroupBox groupBoxResult_SAA;
         private Label labelResult_SAA;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartGrade_SAA;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartPercent_SAA;
         private TextBox textBoxResult_SAA;
         private ToolStripButton toolStripButtonClean_SAA;
         private Button buttonGrade_SAA;
