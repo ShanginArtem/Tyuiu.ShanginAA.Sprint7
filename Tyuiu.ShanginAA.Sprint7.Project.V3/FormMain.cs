@@ -19,7 +19,7 @@ namespace Tyuiu.ShanginAA.Sprint7.Project.V3
         {
             
             chartPercent_SAA.ChartAreas.Add(new ChartArea("MainArea")); 
-            chartPercent_SAA.Legends.Add(new Legend("GradesLegend")); 
+            chartPercent_SAA.Legends.Add(new Legend("PercentsLegend")); 
             chartPercent_SAA.Series.Add(new Series("ќценки")
             {
                 ChartType = SeriesChartType.Column, 
@@ -123,39 +123,39 @@ namespace Tyuiu.ShanginAA.Sprint7.Project.V3
         }
 
        
-        private void buttonGrade_SAA_Click(object sender, EventArgs e)
+        private void buttonPercent_SAA_Click(object sender, EventArgs e)
         {
             
-            var grades = GetGradesFromDataGridView();
+            var percents = GetPercentsFromDataGridView();
 
             
-            var gradeCounts = Enumerable.Range(1, 100).ToDictionary(
-                grade => grade,
-                grade => grades.Count(g => g == grade)
+            var percentCounts = Enumerable.Range(1, 100).ToDictionary(
+                percent => percent,
+                percent => percents.Count(g => g == percent)
             );
 
            
             chartPercent_SAA.Series["ќценки"].Points.Clear();
 
            
-            foreach (var gradeCount in gradeCounts)
+            foreach (var percentCount in percentCounts)
             {
-                chartPercent_SAA.Series["ќценки"].Points.AddXY(gradeCount.Key, gradeCount.Value);
+                chartPercent_SAA.Series["ќценки"].Points.AddXY(percentCount.Key, percentCount.Value);
             }
         }
-        private List<int> GetGradesFromDataGridView()
+        private List<int> GetPercentsFromDataGridView()
         {
-            var grades = new List<int>();
+            var percents = new List<int>();
 
             foreach (DataGridViewRow row in dataGridViewTeachers_SAA.Rows)
             {
-                if (row.Cells.Count > 1 && int.TryParse(row.Cells[1].Value?.ToString(), out int grade)) 
+                if (row.Cells.Count > 1 && int.TryParse(row.Cells[1].Value?.ToString(), out int percent)) 
                 {
-                    grades.Add(grade);
+                    percents.Add(percent);
                 }
             }
 
-            return grades;
+            return percents;
         }
         private bool SearchValueInDataGridView(DataGridView dataGridView, string searchValue)
         {
@@ -237,9 +237,9 @@ namespace Tyuiu.ShanginAA.Sprint7.Project.V3
 
                 try
                 {
-                    var grades = DataService.LoadGradesFromCsv(filePath); 
-                    double averageGrade = DataService.CalculateAverageGrade(grades); 
-                    textBoxResult_SAA.Text = averageGrade.ToString(); 
+                    var percents = DataService.LoadPercentsFromCsv(filePath); 
+                    double averagePercent = DataService.CalculateAveragePercent(percents); 
+                    textBoxResult_SAA.Text = averagePercent.ToString(); 
                 }
                 catch (Exception ex)
                 {
@@ -266,7 +266,7 @@ namespace Tyuiu.ShanginAA.Sprint7.Project.V3
 
         }
 
-        private void chartGrade_SAA_Click(object sender, EventArgs e)
+        private void chartPercent_SAA_Click(object sender, EventArgs e)
         {
 
         }

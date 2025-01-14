@@ -4,9 +4,9 @@ namespace Tyuiu.ShanginAA.Sprint7.Project.V3.Lib
 {
     public class DataService
     {
-        public static List<int> LoadGradesFromCsv(string filePath)
+        public static List<int> LoadPercentsFromCsv(string filePath)
         {
-            var grades = new List<int>();
+            var percents = new List<int>();
 
             try
             {
@@ -16,9 +16,9 @@ namespace Tyuiu.ShanginAA.Sprint7.Project.V3.Lib
                     {
                         var line = reader.ReadLine();
                         var columns = line.Split(';');
-                        if (columns.Length > 1 && int.TryParse(columns[1], out int grade))
+                        if (columns.Length > 1 && int.TryParse(columns[1], out int percent))
                         {
-                            grades.Add(grade);
+                            percents.Add(percent);
                         }
                     }
                 }
@@ -28,23 +28,23 @@ namespace Tyuiu.ShanginAA.Sprint7.Project.V3.Lib
                 throw new Exception("Ошибка при чтении файла: " + ex.Message);
             }
 
-            return grades;
+            return percents;
         }
 
-        public static double CalculateAverageGrade(List<int> grades)
+        public static double CalculateAveragePercent(List<int> percents)
         {
-            if (grades == null || grades.Count == 0)
+            if (percents == null || percents.Count == 0)
                 throw new ArgumentException("Список оценок пуст или не задан.");
 
             // Подсчитываем сумму оценок
             int total = 0;
-            foreach (var grade in grades)
+            foreach (var percent in percents)
             {
-                total += grade;
+                total += percent;
             }
 
             // Возвращаем среднее арифметическое
-            return Math.Round((double)total / grades.Count, 3);
+            return Math.Round((double)total / percents.Count, 3);
         }
     }
 }

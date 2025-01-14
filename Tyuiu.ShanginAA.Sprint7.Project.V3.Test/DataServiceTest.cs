@@ -6,11 +6,11 @@ namespace Tyuiu.ShanginAA.Sprint7.Project.V3.Test
     public class DataServiceTest
     {
         [TestMethod]
-        public void CalcAverageGrades()
+        public void CalcAveragePercents()
         {
 
-            var Grades = new List<int> { 1, 2, 3, 4, 5 };
-            var res = DataService.CalculateAverageGrade(Grades);
+            var Percents = new List<int> { 1, 2, 3, 4, 5 };
+            var res = DataService.CalculateAveragePercent(Percents);
             double wait = 3;
             Assert.AreEqual(wait, res);
 
