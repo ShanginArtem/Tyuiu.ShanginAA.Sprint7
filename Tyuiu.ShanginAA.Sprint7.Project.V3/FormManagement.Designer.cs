@@ -40,7 +40,7 @@
             textBoxManagement_SAA.Multiline = true;
             textBoxManagement_SAA.Name = "textBoxManagement_SAA";
             textBoxManagement_SAA.ScrollBars = ScrollBars.Vertical;
-            textBoxManagement_SAA.Size = new Size(800, 450);
+            textBoxManagement_SAA.Size = new Size(818, 450);
             textBoxManagement_SAA.TabIndex = 0;
             textBoxManagement_SAA.TextChanged += textBoxManagement_SAA_TextChanged;
             // 
@@ -49,7 +49,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(8, 8);
             label1.Name = "label1";
-            label1.Size = new Size(793, 330);
+            label1.Size = new Size(795, 345);
             label1.TabIndex = 1;
             label1.Text = resources.GetString("label1.Text");
             // 
@@ -57,7 +57,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(818, 450);
             Controls.Add(label1);
             Controls.Add(textBoxManagement_SAA);
             FormBorderStyle = FormBorderStyle.FixedDialog;
